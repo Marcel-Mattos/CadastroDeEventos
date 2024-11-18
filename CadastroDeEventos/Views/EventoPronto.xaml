@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CadastroDeEventos.Views.EventoPronto"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+            <GradientStop Color="Silver" Offset="0.6"/>
+            <GradientStop Color="Black" Offset="0.8"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+
+    <VerticalStackLayout VerticalOptions="CenterAndExpand"
+                         Padding="10">
+
+        <!--Nome do Evento-->
+        <Label Text="{Binding NomeEvento}"
+               TextColor="Gold"
+               FontFamily="OdibeeSans"
+               FontSize="50"
+               HorizontalTextAlignment="Center"/>
+
+        <Frame Margin="10"
+               BackgroundColor="Gray">
+            <VerticalStackLayout>
+
+                <!--Participantes-->
+                <Frame Margin="10">
+                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
+                                           Spacing="5">
+
+                        <Label Text="Numero de participantes:" FontAttributes="Bold"/>
+                        <Label Text="{Binding Nparticipantes}"
+                               TextColor="Red"/>
+
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <!--Local do evento-->
+                <Frame Margin="10"
+                       Padding="10">
+                    <HorizontalStackLayout Spacing="5"
+                                           HorizontalOptions="CenterAndExpand">
+                        <Label Text="Local do Evento: " FontAttributes="Bold"/>
+                        <Label Text="{Binding local_selecionado.Descricao}" TextColor="Red"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <!--Data do evento-->
+                <Frame Margin="10">
+                    <Grid ColumnDefinitions="*, *, *"
+                          RowDefinitions="Auto, Auto">
+
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Inicio:" FontAttributes="Bold"/>
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Text="Término:" FontAttributes="Bold"/>
+                        <Label Grid.Row="0"
+                               Grid.Column="2"
+                               Text="Dias de eveto:" FontAttributes="Bold"/>
+
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="{Binding DataInicio, StringFormat='{}{0:dd/MM/yyyy}'}"
+                               TextColor="red"/>
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding DataTermino, StringFormat='{}{0:dd/MM/yyyy}'}"
+                               TextColor="red"/>
+                        <Label Grid.Row="1"
+                               Grid.Column="2"
+                               Text="{Binding Diaria}"
+                               TextColor="Red"/>
+
+                    </Grid>
+                </Frame>
+
+                <!--Total-->
+                <Frame Margin="10">
+                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
+                                           Spacing="8">
+                        <Label Text="Valor Total:" FontAttributes="Bold"/>
+                        <Label Text="{Binding ValorTotal, StringFormat='{}{0:c}'}"
+                               TextColor="red"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <Button Margin="10"
+                        Text="Voltar"
+                        TextColor="gold"
+                        FontSize="20"
+                        BackgroundColor="black"
+                        FontAttributes="Bold"
+                        Clicked="Button_Clicked"/>
+
+            </VerticalStackLayout>
+        </Frame>
+
+
+
+    </VerticalStackLayout>
+</ContentPage>
